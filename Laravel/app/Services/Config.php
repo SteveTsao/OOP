@@ -18,15 +18,15 @@ class Config
 {
     use PropReadOnlyTrait;
 
-    protected $ext = '';
-    protected $location = '';
-    protected $subDirectory = true;
-    protected $unit = '';
-    protected $remove = false;
-    protected $handler = '';
-    protected $destination = '';
-    protected $dir = '';
-    protected $connectionString = '';
+    private $ext = '';
+    private $location = '';
+    private $subDirectory = true;
+    private $unit = '';
+    private $remove = false;
+    private $handler = '';
+    private $destination = '';
+    private $dir = '';
+    private $connectionString = '';
 
     /**
      * Config constructor.

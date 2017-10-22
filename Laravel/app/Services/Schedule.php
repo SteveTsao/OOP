@@ -11,6 +11,8 @@ namespace App\Services;
 
 class Schedule
 {
+    use PropReadOnlyTrait;
+
     private $ext = '';
     private $time = '';
     private $interval = '';
