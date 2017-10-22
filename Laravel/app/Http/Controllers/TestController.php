@@ -25,6 +25,8 @@ class TestController extends Controller
             print_r("\n<br/>Config[$key]->ConnectionString=" . $item->ConnectionString);
         });
 
+        print_r("\n<br/>ConfigManager->Count=" . $configs->Count);
+
         $schedules = new ScheduleManager();
 
         collect($schedules->ProcessSchedules())->map(function ($item, $key) {
@@ -32,5 +34,7 @@ class TestController extends Controller
             print_r("\n<br/>Schedule[$key]->Time=" . $item->Time);
             print_r("\n<br/>Schedule[$key]->Interval=" . $item->Interval);
         });
+
+        print_r("\n<br/>ScheduleManager->Count=" . $schedules->Count);
     }
 }
