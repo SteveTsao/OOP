@@ -1,0 +1,11 @@
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\bin\Debug\netcoreapp2.0\ConsoleOop.deps.json
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\bin\Debug\netcoreapp2.0\ConsoleOop.runtimeconfig.json
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\bin\Debug\netcoreapp2.0\ConsoleOop.runtimeconfig.dev.json
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\bin\Debug\netcoreapp2.0\ConsoleOop.dll
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\bin\Debug\netcoreapp2.0\ConsoleOop.pdb
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.csprojResolveAssemblyReference.cache
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.csproj.CoreCompileInputs.cache
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.AssemblyInfoInputs.cache
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.AssemblyInfo.cs
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.dll
+D:\GitProject\OOP\NetCore\ConsoleOop\ConsoleOop\obj\Debug\netcoreapp2.0\ConsoleOop.pdb
