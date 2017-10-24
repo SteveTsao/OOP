@@ -9,45 +9,35 @@
 namespace App\Services;
 
 
-class ScheduleManager
+/**
+ * 封裝Schedule物件類別
+ * Class ScheduleManager
+ * @author steve.tsao
+ * @package App\Services
+ */
+class ScheduleManager extends JsonManager
 {
-    private $shedules = [];
+    /**
+     * @var array 陣列儲存多筆Schedule物件
+     */
+    private $schedules = [];
 
     /**
+     * 解析JSON檔案轉成Schedule物件陣列
      * @author steve.tsao
-     * @param string $path
+     * @param string $path 檔案位置
      * @return array
      */
-    public function ProcessSchedules(string $path = 'schedules.json'): array
+    public function ProcessJsonConfig(string $path = 'schedules.json'): array
     {
-        $data = json_decode(file_get_contents($path), JSON_OBJECT_AS_ARRAY);
-
-        if (!is_array($data) || empty($data['schedules']) || !is_array($data['schedules'])) {
-            return [];
-        }
-
-        $this->shedules = collect($data['schedules'])->map(function ($item) {
+        $this->schedules = $this->ProcessJson($path, 'schedules', function ($item) {
             return new Schedule(
                 $item['ext'],
                 $item['time'],
                 $item['interval']
             );
-        })->toArray();
+        });
 
-        return $this->shedules;
-    }
-
-    /**
-     * @author steve.tsao
-     * @param string $name
-     * @return int
-     */
-    public function __get(string $name)
-    {
-        // TODO: Implement __get() method.
-
-        if ($name === 'Count') {
-            return count($this->shedules);
-        }
+        return $this->schedules;
     }
 }

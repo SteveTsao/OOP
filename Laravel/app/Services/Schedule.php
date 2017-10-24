@@ -9,9 +9,15 @@
 namespace App\Services;
 
 
+/**
+ * 自動排程時間類別
+ * Class Schedule
+ * @author steve.tsao
+ * @package App\Services
+ */
 class Schedule
 {
-    use PropReadOnlyTrait;
+    use PropReadOnlyTrait; // 設定類別唯讀屬性
 
     private $ext = '';
     private $time = '';
@@ -19,9 +25,9 @@ class Schedule
 
     /**
      * Schedule constructor.
-     * @param string $ext
-     * @param string $time
-     * @param string $interval
+     * @param string $ext 處理檔案格式
+     * @param string $time 排程時間
+     * @param string $interval 排程間隔
      */
     public function __construct(string $ext, string $time, string $interval)
     {

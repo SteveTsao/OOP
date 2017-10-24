@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\ConfigManager;
+use App\Services\MyBackupService;
 use App\Services\ScheduleManager;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class TestController extends Controller
     {
         $configs = new ConfigManager();
 
-        collect($configs->ProcessConfigs())->map(function ($item, $key) {
+        collect($configs->ProcessJsonConfig())->map(function ($item, $key) {
             print_r("\n<br/>Config[$key]->Ext=" . $item->Ext);
             print_r("\n<br/>Config[$key]->Location=" . $item->Location);
             print_r("\n<br/>Config[$key]->SubDirectory=" . var_export($item->SubDirectory, true));
@@ -29,12 +30,15 @@ class TestController extends Controller
 
         $schedules = new ScheduleManager();
 
-        collect($schedules->ProcessSchedules())->map(function ($item, $key) {
+        collect($schedules->ProcessJsonConfig())->map(function ($item, $key) {
             print_r("\n<br/>Schedule[$key]->Ext=" . $item->Ext);
             print_r("\n<br/>Schedule[$key]->Time=" . $item->Time);
             print_r("\n<br/>Schedule[$key]->Interval=" . $item->Interval);
         });
 
         print_r("\n<br/>ScheduleManager->Count=" . $schedules->Count);
+
+        $myBackup = new MyBackupService(new ConfigManager(), new ScheduleManager());
+        $myBackup->ProcessJsonConfigs();
     }
 }

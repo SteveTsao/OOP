@@ -10,13 +10,14 @@ namespace App\Services;
 
 
 /**
+ * 檔案格式處理類別
  * Class Config
  * @author steve.tsao
  * @package App\Services
  */
 class Config
 {
-    use PropReadOnlyTrait;
+    use PropReadOnlyTrait; // 設定類別唯讀屬性
 
     private $ext = '';
     private $location = '';
@@ -31,15 +32,15 @@ class Config
     /**
      * Config constructor.
      * @author steve.tsao
-     * @param string $ext
-     * @param string $location
-     * @param bool $subDirectory
-     * @param string $unit
-     * @param bool $remove
-     * @param string $handler
-     * @param string $destination
-     * @param string $dir
-     * @param string $connectionString
+     * @param string $ext 檔案格式
+     * @param string $location 備份檔案的目錄
+     * @param bool $subDirectory 是否處理子目錄
+     * @param string $unit 設定備份單位
+     * @param bool $remove 處理完是否刪除檔案
+     * @param string $handler 處理方式
+     * @param string $destination 處理後儲存目的
+     * @param string $dir 處理後的目錄
+     * @param string $connectionString 資料庫連接字串
      */
     public function __construct(
         string $ext,

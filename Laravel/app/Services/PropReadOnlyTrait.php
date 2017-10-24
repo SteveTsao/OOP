@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 /**
+ * 類別唯讀屬性實作
  * Trait PropReadOnlyTrait
  * @author steve.tsao
  * @package App\Services
@@ -17,6 +18,7 @@ namespace App\Services;
 trait PropReadOnlyTrait
 {
     /**
+     * 類別屬性內容傳回
      * @author steve.tsao
      * @param string $name
      * @return mixed
