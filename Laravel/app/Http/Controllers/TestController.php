@@ -38,7 +38,8 @@ class TestController extends Controller
 
         print_r("\n<br/>ScheduleManager->Count=" . $schedules->Count);
 
-        $myBackup = new MyBackupService(new ConfigManager(), new ScheduleManager());
-        $myBackup->ProcessJsonConfigs();
+        $myBackupService = resolve(MyBackupService::class);
+
+        print_r($myBackupService->ProcessJsonConfigs());
     }
 }

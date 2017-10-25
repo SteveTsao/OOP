@@ -16,7 +16,7 @@ namespace App\Services;
  */
 abstract class JsonManager
 {
-    use PropReadOnlyTrait; // 設定類別唯讀屬性
+    use PropReadOnlyTrait; // 設定類別唯讀屬性: this->Count
 
     /**
      * 實作解析JSON轉換物件
@@ -47,6 +47,6 @@ abstract class JsonManager
 
         $this->count = $item->count();
 
-        return $item->toArray();
+        return $item->all();
     }
 }
