@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 /**
+ * 備份執行類別
  * Class MyBackupService
  * @author steve.tsao
  * @package App\Services
@@ -39,7 +40,7 @@ class MyBackupService
     }
 
     /**
-     * 解析JSON檔案
+     * 處理JSON檔案執行設定
      * @author steve.tsao
      */
     public function ProcessJsonConfigs(): array

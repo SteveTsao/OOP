@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 /**
+ * 物件Manager抽象類別
  * Class JsonManager
  * @author steve.tsao
  * @package App\Services
@@ -29,13 +30,13 @@ abstract class JsonManager
     private $count = 0;
 
     /**
-     * 解析Json檔案對應回傳物件陣列
+     * 解析Json檔案回傳Manager物件陣列
      * @param string $path 檔案位置
-     * @param string $key 物件陣列在JSON的起始鍵值
+     * @param string $key 物件陣列在JSON的起始節點
      * @param \Closure $map 回傳物件處理函數
      * @return array
      */
-    protected function ProcessJson(string $path, string $key, \Closure $map): array
+    protected function GetJsonObject(string $path, string $key, \Closure $map): array
     {
         $data = json_decode(file_get_contents($path), JSON_OBJECT_AS_ARRAY);
 

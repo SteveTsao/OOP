@@ -8,7 +8,7 @@ namespace ConsoleOop
         {
             ConfigManager configs = new ConfigManager();
 
-            configs.ProcessConfig("configs.json");
+            configs.ProcessJsonConfig();
 
             for (int i = 0; i < configs.Count; i++)
             {
@@ -25,7 +25,7 @@ namespace ConsoleOop
 
             ScheduleManager schedules = new ScheduleManager();
 
-            schedules.ProcessSchedule("schedule.json");
+            schedules.ProcessJsonConfig();
 
             for (int i = 0; i < schedules.Count; i++)
             {
@@ -33,6 +33,11 @@ namespace ConsoleOop
                 Console.WriteLine("schedules[" + i + "].Time=" + schedules[i].Time);
                 Console.WriteLine("schedules[" + i + "].Interval=" + schedules[i].Interval);
             }
+
+
+            MyBackupService myBackup = new MyBackupService(new ConfigManager(), new ScheduleManager());
+
+            myBackup.ProcessJsonConfigs();
 
             Console.ReadKey(true);
         }

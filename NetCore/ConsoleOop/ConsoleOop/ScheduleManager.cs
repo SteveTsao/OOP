@@ -1,46 +1,55 @@
 ﻿using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace ConsoleOop
 {
+    /// <summary>
+    /// 封裝Schedule物件類別
+    /// </summary>
     [DataContract]
-    class ScheduleManager
+    class ScheduleManager : JsonManager
     {
+        /// <summary>
+        /// 陣列儲存多筆Schedule物件
+        /// </summary>
         [DataMember]
         private List<Schedule> schedules { get; set; }
 
+        /// <summary>
+        /// 陣列Schedule物件總數
+        /// </summary>
         public int Count { get { return this.schedules.Count; } }
 
+        /// <summary>
+        /// 類別 indexer
+        /// </summary>
+        /// <param name="number">索引</param>
+        /// <returns>Schedule物件</returns>
         public Schedule this[int number]
         {
             get { return this.schedules[number]; }
         }
 
+        /// <summary>
+        /// 建構子 初始設定
+        /// </summary>
         public ScheduleManager()
         {
             this.schedules = new List<Schedule>();
         }
 
-        public void ProcessSchedule(string path)
+        /// <summary>
+        /// 解析JSON檔案轉成Schedule物件陣列
+        /// </summary>
+        public override void ProcessJsonConfig()
         {
+            var tObj = this.GetJsonObject<ScheduleManager>("schedule.json");
+
             this.schedules = new List<Schedule>();
 
-            string json = File.ReadAllText(path);
-
-            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(json)))
+            for (int i = 0; i < tObj.Count; i++)
             {
-                // Deserialization from JSON  
-                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(ScheduleManager));
-
-                ScheduleManager arr = ((ScheduleManager)deserializer.ReadObject(ms));
-
-                for (int i = 0; i < arr.Count; i++)
-                {
-                    this.schedules.Add(arr[i]);
-                }
+                this.schedules.Add(tObj[i]);
             }
         }
     }

@@ -30,7 +30,7 @@ class ConfigManager extends JsonManager
      */
     public function ProcessJsonConfig(string $path = 'configs.json'): array
     {
-        $this->configs = $this->ProcessJson($path, 'configs', function ($item) {
+        $this->configs = $this->GetJsonObject($path, 'configs', function ($item) {
             return new Config(
                 $item['ext'],
                 $item['location'],

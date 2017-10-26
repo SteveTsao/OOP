@@ -10,7 +10,7 @@ namespace App\Services;
 
 
 /**
- * 檔案格式處理類別
+ * 檔案處理設定類別
  * Class Config
  * @author steve.tsao
  * @package App\Services
@@ -38,7 +38,7 @@ class Config
      * @param string $unit 設定備份單位
      * @param bool $remove 處理完是否刪除檔案
      * @param string $handler 處理方式
-     * @param string $destination 處理後儲存目的
+     * @param string $destination 
      * @param string $dir 處理後的目錄
      * @param string $connectionString 資料庫連接字串
      */

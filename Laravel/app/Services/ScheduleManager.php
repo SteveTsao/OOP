@@ -30,7 +30,7 @@ class ScheduleManager extends JsonManager
      */
     public function ProcessJsonConfig(string $path = 'schedules.json'): array
     {
-        $this->schedules = $this->ProcessJson($path, 'schedules', function ($item) {
+        $this->schedules = $this->GetJsonObject($path, 'schedules', function ($item) {
             return new Schedule(
                 $item['ext'],
                 $item['time'],

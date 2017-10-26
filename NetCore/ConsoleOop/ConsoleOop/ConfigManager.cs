@@ -1,46 +1,55 @@
 ﻿using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace ConsoleOop
 {
+    /// <summary>
+    /// 封裝Config物件類別
+    /// </summary>
     [DataContract]
-    class ConfigManager
+    class ConfigManager : JsonManager
     {
+        /// <summary>
+        /// 陣列儲存多筆Config物件
+        /// </summary>
         [DataMember]
         private List<Config> configs { get; set; }
 
+        /// <summary>
+        /// 陣列Config物件總數
+        /// </summary>
         public int Count { get { return this.configs.Count; } }
 
+        /// <summary>
+        /// 類別 indexer
+        /// </summary>
+        /// <param name="number">索引</param>
+        /// <returns>Config物件</returns>
         public Config this[int number]
         {
             get { return this.configs[number]; }
         }
 
+        /// <summary>
+        /// 建構子 初始設定
+        /// </summary>
         public ConfigManager()
         {
             this.configs = new List<Config>();
         }
 
-        public void ProcessConfig(string path)
+        /// <summary>
+        /// 解析JSON檔案轉成Config物件陣列
+        /// </summary>
+        public override void ProcessJsonConfig()
         {
+            var tObj = this.GetJsonObject<ConfigManager>("configs.json");
+
             this.configs = new List<Config>();
 
-            string json = File.ReadAllText(path);
-
-            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(json)))
+            for (int i = 0; i < tObj.Count; i++)
             {
-                // Deserialization from JSON  
-                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(ConfigManager));
-
-                ConfigManager arr = ((ConfigManager)deserializer.ReadObject(ms));
-
-                for (int i = 0; i < arr.Count; i++)
-                {
-                    this.configs.Add(arr[i]);
-                }
+                this.configs.Add(tObj[i]);
             }
         }
     }
