@@ -18,7 +18,7 @@ namespace App\Services;
 trait PropReadOnlyTrait
 {
     /**
-     * 類別屬性內容傳回
+     * 取得類別屬性內容
      * @author steve.tsao
      * @param string $name
      * @return mixed
@@ -30,9 +30,27 @@ trait PropReadOnlyTrait
         // 類別屬性字首小寫
         $key = lcfirst($name);
 
-        // 類別屬性是否存在
-        if ($key !== $name && property_exists($this, $key)) {
-            return $this->$key;
+        // 類別屬性不存在
+        if ($key === $name || !property_exists($this, $key)) {
+            return null;
         }
+
+        return $this->$key;
+    }
+
+    /**
+     * 類別屬性是否存在
+     * @author steve.tsao
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        // TODO: Implement __isset() method.
+
+        // 類別屬性字首小寫
+        $key = lcfirst($name);
+
+        return ($key !== $name && property_exists($this, $key));
     }
 }
