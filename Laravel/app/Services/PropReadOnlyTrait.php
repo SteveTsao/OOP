@@ -41,10 +41,10 @@ trait PropReadOnlyTrait
     /**
      * 類別屬性是否存在
      * @author steve.tsao
-     * @param $name
+     * @param string $name
      * @return bool
      */
-    public function __isset($name)
+    public function __isset(string $name)
     {
         // TODO: Implement __isset() method.
 
