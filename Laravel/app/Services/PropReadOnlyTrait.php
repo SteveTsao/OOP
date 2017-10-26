@@ -44,7 +44,7 @@ trait PropReadOnlyTrait
      * @param string $name
      * @return bool
      */
-    public function __isset(string $name)
+    public function __isset(string $name): bool
     {
         // TODO: Implement __isset() method.
 
