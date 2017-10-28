@@ -10,28 +10,27 @@ namespace App\Services;
 
 
 /**
+ * 封裝Config物件類別
  * Class ConfigManager
  * @author steve.tsao
  * @package App\Services
  */
-class ConfigManager
+class ConfigManager extends JsonManager
 {
+    /**
+     * @var array 陣列儲存多筆Config物件
+     */
     private $configs = [];
 
     /**
+     * 解析JSON檔案轉成Config物件陣列
      * @author steve.tsao
-     * @param string $path
+     * @param string $path 檔案位置
      * @return array
      */
-    public function ProcessConfigs(string $path = 'configs.json'): array
+    public function ProcessJsonConfig(string $path = 'configs.json'): array
     {
-        $data = json_decode(file_get_contents($path), JSON_OBJECT_AS_ARRAY);
-
-        if (!is_array($data) || empty($data['configs']) || !is_array($data['configs'])) {
-            return [];
-        }
-
-        $this->configs = collect($data['configs'])->map(function ($item) {
+        $this->configs = $this->GetJsonObject($path, 'configs', function ($item) {
             return new Config(
                 $item['ext'],
                 $item['location'],
@@ -43,22 +42,8 @@ class ConfigManager
                 $item['dir'],
                 $item['connectionString']
             );
-        })->toArray();
+        });
 
         return $this->configs;
-    }
-
-    /**
-     * @author steve.tsao
-     * @param string $name
-     * @return int
-     */
-    public function __get(string $name)
-    {
-        // TODO: Implement __get() method.
-
-        if ($name === 'Count') {
-            return count($this->configs);
-        }
     }
 }
