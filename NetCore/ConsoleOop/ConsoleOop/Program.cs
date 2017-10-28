@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConsoleOop
 {
@@ -6,7 +7,8 @@ namespace ConsoleOop
     {
         static void Main(string[] args)
         {
-            ConfigManager configs = new ConfigManager();
+            /// 封裝Config物件類別
+            var configs = new ConfigManager();
 
             configs.ProcessJsonConfig();
 
@@ -23,7 +25,8 @@ namespace ConsoleOop
                 Console.WriteLine("configs[" + i + "].ConnectionString=" + configs[i].ConnectionString);
             }
 
-            ScheduleManager schedules = new ScheduleManager();
+            /// 封裝Schedule物件類別
+            var schedules = new ScheduleManager();
 
             schedules.ProcessJsonConfig();
 
@@ -34,10 +37,17 @@ namespace ConsoleOop
                 Console.WriteLine("schedules[" + i + "].Interval=" + schedules[i].Interval);
             }
 
+            /// Dependency Injection 依賴注入
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<ConfigManager>()
+                .AddSingleton<ScheduleManager>()
+                .AddSingleton<MyBackupService>()
+                .BuildServiceProvider();
 
-            MyBackupService myBackup = new MyBackupService(new ConfigManager(), new ScheduleManager());
+            /// 備份執行類別
+            var bkService = serviceProvider.GetService<MyBackupService>();
 
-            myBackup.ProcessJsonConfigs();
+            bkService.ProcessJsonConfigs();
 
             Console.ReadKey(true);
         }

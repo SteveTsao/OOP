@@ -16,6 +16,11 @@ namespace ConsoleOop
         private List<Schedule> schedules { get; set; }
 
         /// <summary>
+        /// JSON檔案位置
+        /// </summary>
+        private const string path = "schedule.json";
+
+        /// <summary>
         /// 陣列Schedule物件總數
         /// </summary>
         public int Count { get { return this.schedules.Count; } }
@@ -43,7 +48,7 @@ namespace ConsoleOop
         /// </summary>
         public override void ProcessJsonConfig()
         {
-            var tObj = this.GetJsonObject<ScheduleManager>("schedule.json");
+            var tObj = this.GetJsonObject<ScheduleManager>(path);
 
             this.schedules = new List<Schedule>();
 

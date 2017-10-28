@@ -16,6 +16,11 @@ namespace ConsoleOop
         private List<Config> configs { get; set; }
 
         /// <summary>
+        /// JSON檔案位置
+        /// </summary>
+        private const string path = "configs.json";
+
+        /// <summary>
         /// 陣列Config物件總數
         /// </summary>
         public int Count { get { return this.configs.Count; } }
@@ -43,7 +48,7 @@ namespace ConsoleOop
         /// </summary>
         public override void ProcessJsonConfig()
         {
-            var tObj = this.GetJsonObject<ConfigManager>("configs.json");
+            var tObj = this.GetJsonObject<ConfigManager>(path);
 
             this.configs = new List<Config>();
 

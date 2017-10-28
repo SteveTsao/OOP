@@ -15,14 +15,14 @@ namespace ConsoleOop
         /// <summary>
         /// 建構子 依賴注入
         /// </summary>
-        /// <param name="configManager"></param>
-        /// <param name="scheduleManager"></param>
+        /// <param name="configManager">封裝Config物件類別</param>
+        /// <param name="scheduleManager">封裝Schedule物件類別</param>
         public MyBackupService(ConfigManager configManager, ScheduleManager scheduleManager)
         {
             this.managers.Add(configManager);
             this.managers.Add(scheduleManager);
         }
-
+        
         /// <summary>
         /// 處理JSON檔案執行設定
         /// </summary>
