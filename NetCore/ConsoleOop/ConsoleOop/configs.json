@@ -2,35 +2,35 @@
   "configs": [
     {
       "ext": "cs",
-      "location": "c:\\Projects",
+      "location": "d:\\GitProject\\OOP\\NetCore\\ConsoleOop\\ConsoleOop",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handler": "zip",
+      "handlers": [ "zip", "encode" ],
       "destination": "directory",
-      "dir": "c:\\MyArchieves",
+      "dir": "D:\\OopTestFile",
       "connectionString": ""
     },
     {
       "ext": "DOCX",
-      "location": "c:\\Documents",
+      "location": "d:\\",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handler": "encode",
+      "handlers": [ "encode" ],
       "destination": "db",
       "dir": "",
       "connectionString": "MyConnectionString"
     },
     {
       "ext": "jpg",
-      "location": "c:\\Pictures",
+      "location": "d:\\OopTestFile",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handler": "",
+      "handlers": [ "zip" ],
       "destination": "directory",
-      "dir": "c:\\MyArchieves",
+      "dir": "d:\\OopTestFile",
       "connectionString": ""
     }
   ]

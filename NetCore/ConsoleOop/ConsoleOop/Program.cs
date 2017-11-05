@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using ConsoleOop.Configs;
 
 namespace ConsoleOop
 {
@@ -19,7 +20,7 @@ namespace ConsoleOop
                 Console.WriteLine("configs[" + i + "].SubDirectory=" + configs[i].SubDirectory.ToString());
                 Console.WriteLine("configs[" + i + "].Unit=" + configs[i].Unit);
                 Console.WriteLine("configs[" + i + "].Remove=" + configs[i].Remove.ToString());
-                Console.WriteLine("configs[" + i + "].Handler=" + configs[i].Handler);
+                Console.WriteLine("configs[" + i + "].Handlers=" + configs[i].Handlers.Length.ToString());
                 Console.WriteLine("configs[" + i + "].Destination=" + configs[i].Destination);
                 Console.WriteLine("configs[" + i + "].Dir=" + configs[i].Dir);
                 Console.WriteLine("configs[" + i + "].ConnectionString=" + configs[i].ConnectionString);
@@ -44,10 +45,14 @@ namespace ConsoleOop
                 .AddSingleton<MyBackupService>()
                 .BuildServiceProvider();
 
-            /// 備份執行類別
+            /// 備份類別
             var bkService = serviceProvider.GetService<MyBackupService>();
 
+            /// 讀取檔案的備份設定
             bkService.ProcessJsonConfigs();
+
+            /// 執行檔案備份
+            bkService.DoBackup();
 
             Console.ReadKey(true);
         }

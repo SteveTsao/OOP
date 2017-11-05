@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
-namespace ConsoleOop
+namespace ConsoleOop.Configs
 {
     /// <summary>
     /// 物件Manager抽象類別
@@ -17,11 +17,11 @@ namespace ConsoleOop
         abstract public void ProcessJsonConfig();
 
         /// <summary>
-        /// 解析Json檔案回傳Manager物件
+        /// 解析JSON檔案轉換Manager型別物件
         /// </summary>
         /// <typeparam name="T">Manager泛型</typeparam>
         /// <param name="path">JSON檔案位置</param>
-        /// <returns>Manager物件</returns>
+        /// <returns>轉換Manager型別物件</returns>
         protected T GetJsonObject<T>(string path)
         {
             T obj = default(T);
@@ -33,7 +33,7 @@ namespace ConsoleOop
                 DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(T));
 
                 // 反解序列化物件
-                obj = ((T)deserializer.ReadObject(ms));
+                obj = (T)deserializer.ReadObject(ms);
             }
 
             return obj;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace ConsoleOop
+namespace ConsoleOop.Configs
 {
     /// <summary>
     /// 封裝Schedule物件類別
@@ -23,17 +23,14 @@ namespace ConsoleOop
         /// <summary>
         /// 陣列Schedule物件總數
         /// </summary>
-        public int Count { get { return this.schedules.Count; } }
+        public int Count => this.schedules.Count;
 
         /// <summary>
-        /// 類別 indexer
+        /// 索引子 indexer
         /// </summary>
         /// <param name="number">索引</param>
         /// <returns>Schedule物件</returns>
-        public Schedule this[int number]
-        {
-            get { return this.schedules[number]; }
-        }
+        public Schedule this[int number] => this.schedules[number];
 
         /// <summary>
         /// 建構子 初始設定
@@ -48,13 +45,13 @@ namespace ConsoleOop
         /// </summary>
         public override void ProcessJsonConfig()
         {
-            var tObj = this.GetJsonObject<ScheduleManager>(path);
+            var obj = this.GetJsonObject<ScheduleManager>(path);
 
             this.schedules = new List<Schedule>();
 
-            for (int i = 0; i < tObj.Count; i++)
+            for (int i = 0; i < obj.Count; i++)
             {
-                this.schedules.Add(tObj[i]);
+                this.schedules.Add(obj[i]);
             }
         }
     }

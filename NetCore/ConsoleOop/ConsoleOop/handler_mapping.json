@@ -1,0 +1,6 @@
+﻿{
+  "file": "FileHandler",
+  "encode": "EncodeHandler",
+  "zip": "ZipHandler",
+  "directory": "DirectoryHandler"
+}

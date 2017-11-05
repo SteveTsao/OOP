@@ -43,3 +43,4 @@ class TestController extends Controller
         print_r($myBackupService->ProcessJsonConfigs());
     }
 }
+function someFunction(int $param, $param2) {}
