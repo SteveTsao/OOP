@@ -33,26 +33,6 @@ class AbstractHandler implements IHandler
     }
 
     /**
-     * 字串轉型態Byte陣列
-     * @param string $str 字串
-     * @return array 型態Byte陣列
-     */
-    protected function string2Byte(string $str): array
-    {
-        return unpack('C*', $str);
-    }
-
-    /**
-     * 型態Byte陣列轉字串
-     * @param array $arr 型態Byte陣列
-     * @return string 字串
-     */
-    protected function byte2String(array $arr): string
-    {
-        return pack('C*', ...$arr);
-    }
-
-    /**
      * 儲存檔案
      * @author steve.tsao
      * @param string $path 儲存位置
@@ -64,4 +44,16 @@ class AbstractHandler implements IHandler
         fwrite($fp, $target);
         fclose($fp);
     }
+
+    /*
+    protected function string2Byte(string $str): array
+    {
+        return unpack('C*', $str);
+    }
+
+    protected function byte2String(array $arr): string
+    {
+        return pack('C*', ...$arr);
+    }
+    */
 }
