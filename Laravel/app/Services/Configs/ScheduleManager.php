@@ -6,14 +6,14 @@
  * Time: 下午 05:43
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 封裝Schedule物件類別
  * Class ScheduleManager
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 class ScheduleManager extends JsonManager
 {

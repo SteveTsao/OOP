@@ -6,14 +6,14 @@
  * Time: 下午 05:20
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 封裝Config物件類別
  * Class ConfigManager
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 class ConfigManager extends JsonManager
 {
@@ -37,7 +37,7 @@ class ConfigManager extends JsonManager
                 $item['subDirectory'],
                 $item['unit'],
                 $item['remove'],
-                $item['handler'],
+                $item['handlers'],
                 $item['destination'],
                 $item['dir'],
                 $item['connectionString']

@@ -6,14 +6,14 @@
  * Time: 下午 07:06
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 物件Manager抽象類別
  * Class JsonManager
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 abstract class JsonManager
 {

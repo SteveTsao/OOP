@@ -6,14 +6,14 @@
  * Time: 下午 05:37
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 自動排程時間類別
  * Class Schedule
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 class Schedule
 {
@@ -24,7 +24,9 @@ class Schedule
     private $interval = '';
 
     /**
+     * 建構子 屬性初始設定
      * Schedule constructor.
+     * @author steve.tsao
      * @param string $ext 處理檔案格式
      * @param string $time 排程時間
      * @param string $interval 排程間隔

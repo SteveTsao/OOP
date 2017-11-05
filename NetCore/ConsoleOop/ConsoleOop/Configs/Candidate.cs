@@ -35,7 +35,7 @@ namespace ConsoleOop.Configs
         public readonly long Size;
 
         /// <summary>
-        /// 建購子
+        /// 建構子 屬性初始設定
         /// </summary>
         /// <param name="config">檔案處理設定</param>
         /// <param name="fileDateTime">檔案日期</param>

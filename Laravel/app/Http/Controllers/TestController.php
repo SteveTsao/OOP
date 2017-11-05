@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ConfigManager;
+use App\Services\Configs\ConfigManager;
+use App\Services\Configs\ScheduleManager;
 use App\Services\MyBackupService;
-use App\Services\ScheduleManager;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -36,11 +36,13 @@ class TestController extends Controller
             print_r("\n<br/>Schedule[$key]->Interval=" . $item->Interval);
         });
 
-        print_r("\n<br/>ScheduleManager->Count=" . $schedules->Count);
+        print_r("\n<br/>ScheduleManager->Count=" . $schedules->Count . "\n<br/>");
 
         $myBackupService = resolve(MyBackupService::class);
 
         print_r($myBackupService->ProcessJsonConfigs());
+
+        $myBackupService->DoBackup();
     }
 }
 function someFunction(int $param, $param2) {}

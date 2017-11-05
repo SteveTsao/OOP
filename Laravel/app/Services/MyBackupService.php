@@ -9,6 +9,14 @@
 namespace App\Services;
 
 
+use App\Services\Configs\Candidate;
+use App\Services\Configs\Config;
+use App\Services\Configs\ConfigManager;
+use App\Services\Configs\JsonManager;
+use App\Services\Configs\ScheduleManager;
+use App\Services\Handlers\HandlerFactory;
+use App\Services\Handlers\IHandler;
+
 /**
  * 備份執行類別
  * Class MyBackupService
@@ -23,6 +31,12 @@ class MyBackupService
     private $managers = [];
 
     /**
+     * @var array 存放JsonManager的ProcessJsonConfig結果
+     */
+    private $configs = [];
+
+    /**
+     * 建構子 依賴注入
      * MyBackupService constructor.
      * @author steve.tsao
      * @param ConfigManager $configManager
@@ -46,11 +60,99 @@ class MyBackupService
     public function ProcessJsonConfigs(): array
     {
         // 呼叫JsonManager子類別實作的ProcessJsonConfig函數
-        return collect($this->managers)->map(function ($item) {
+        return collect($this->managers)->map(function ($item, $key) {
             /**
              * @var JsonManager $item
              */
-            return $item->ProcessJsonConfig();
+            $configs = $item->ProcessJsonConfig();
+
+            $this->configs[$key] = $configs;
+
+            return $configs;
+
+        })->all();
+    }
+
+    /**
+     * 所有檔案進行備份
+     * @author steve.tsao
+     */
+    public function DoBackup()
+    {
+        collect($this->findFiles())->each(function (Candidate $candidate) {
+            $this->BroadcastToHandlers($candidate);
+        });
+    }
+
+    /**
+     * 取得所有備份檔案
+     * @author steve.tsao
+     * @return array
+     */
+    private function FindFiles(): array
+    {
+        return collect($this->managers)->map(function ($item, $key) {
+
+            // 找到 ConfigManager 型別物件
+            if (!$item instanceof ConfigManager || empty($this->configs[$key]) || !is_array($this->configs[$key])) {
+                return [];
+            }
+
+            return collect($this->configs[$key])->map(function ($obj) {
+
+                // 取得目錄下所有檔案並過濾類型
+                return collect(glob($obj->Location . '\\*.' . $obj->Ext))->map(function ($path) use ($obj) {
+
+                    $info = pathinfo($path);
+
+                    // 加入備份檔案
+                    return new Candidate($obj, date('Y/m/d H:i:s', fileatime($path)), $info['basename'], $info['basename'], filesize($path));
+
+                });
+
+            });
+
+        })->flatten()->all();
+    }
+
+    /**
+     * 執行檔案備份
+     * @author steve.tsao
+     * @param Candidate $candidate 擋案資訊內容
+     */
+    private function BroadcastToHandlers(Candidate $candidate)
+    {
+        $target = null;
+
+        collect($this->FindHandlers($candidate))->each(function (IHandler $handler) use ($candidate, &$target) {
+            $target = $handler->PerForm($candidate, $target);
+        });
+    }
+
+    /**
+     * 根據檔案類型，建立處理方式
+     * @author steve.tsao
+     * @param Candidate $candidate 檔案資訊
+     * @return array 檔案將進行的處理方式
+     */
+    private function FindHandlers(Candidate $candidate): array
+    {
+        /**
+         * @var Config
+         */
+        $config = $candidate->Config;
+
+        // 讀取檔案 + 檔案處理
+        $arr = array_merge(['file'], $config->Handlers);
+
+        // 目錄備份
+        if (!empty($config->Destination)) {
+            $arr[] = 'directory';
+        }
+
+        return collect($arr)->map(function (string $item) {
+            // 建立處理方式類別
+            return HandlerFactory::Create($item);
         })->all();
     }
 }

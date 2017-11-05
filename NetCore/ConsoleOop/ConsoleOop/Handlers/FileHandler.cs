@@ -16,10 +16,6 @@ namespace ConsoleOop.Handlers
         /// <returns>處理後檔案</returns>
         public override byte[] PerForm(Candidate candidate, byte[] target)
         {
-            byte[] result = target;
-
-            base.PerForm(candidate, target);
-
             if (target == null)
             {
                 /// 轉換成 btyes
@@ -29,7 +25,7 @@ namespace ConsoleOop.Handlers
             /// 暫存檔案
             this.ConvertByteArrayToFile(candidate.Name + ".tmp", target);
 
-            return result;
+            return target;
         }
 
         /// <summary>
@@ -39,7 +35,7 @@ namespace ConsoleOop.Handlers
         /// <returns>檔案</returns>
         private byte[] ConvertFileToByteArray(Candidate candidate)
         {
-            return File.ReadAllBytes(candidate.Config.Location + "\\" + candidate.Name);
+            return File.ReadAllBytes(candidate.Config.Location + candidate.Name);
         }
     }
 }

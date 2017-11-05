@@ -27,7 +27,7 @@ namespace ConsoleOop
             this.managers.Add(configManager);
             this.managers.Add(scheduleManager);
         }
-        
+
         /// <summary>
         /// 處理JSON檔案
         /// </summary>
@@ -40,6 +40,14 @@ namespace ConsoleOop
         }
 
         /// <summary>
+        /// 所有檔案進行備份
+        /// </summary>
+        public void DoBackup()
+        {
+            this.FindFiles().ForEach(this.BroadcastToHandlers);
+        }
+
+        /// <summary>
         /// 取得所有備份檔案
         /// </summary>
         /// <returns>所有備份檔案資訊</returns>
@@ -48,7 +56,7 @@ namespace ConsoleOop
             /// 備份檔案
             var candidates = new List<Candidate>();
 
-            /// 取得 ConfigManager 型別物件
+            /// 找到 ConfigManager 型別物件
             (from o in this.managers
              where o.GetType().Equals(typeof(ConfigManager))
              select o).ToList().ForEach(delegate (JsonManager jsonManager)
@@ -60,10 +68,10 @@ namespace ConsoleOop
                  {
                      /// 指定目錄
                      DirectoryInfo dirInfo = new DirectoryInfo(configManager[i].Location);
-                     
+
                      /// 取得目錄下所有檔案並過濾類型
                      (from o in dirInfo.GetFiles()
-                      where o.Extension.ToLower() == "." + configManager[i].Ext.ToLower()
+                      where o.Extension == "." + configManager[i].Ext
                       select o).ToList().ForEach(delegate (FileInfo info)
                       {
                           /// 加入備份檔案
@@ -76,14 +84,6 @@ namespace ConsoleOop
         }
 
         /// <summary>
-        /// 所有檔案進行備份
-        /// </summary>
-        public void DoBackup()
-        {
-            this.FindFiles().ForEach(this.BroadcastToHandlers);
-        }
-
-        /// <summary>
         /// 執行檔案備份
         /// </summary>
         /// <param name="candidate">擋案資訊內容</param>
@@ -91,9 +91,7 @@ namespace ConsoleOop
         {
             byte[] target = null;
 
-            List<IHandler> handlers = this.FindHandlers(candidate);
-
-            handlers.ForEach(delegate (IHandler handler)
+            this.FindHandlers(candidate).ForEach(delegate (IHandler handler)
             {
                 target = handler.PerForm(candidate, target);
             });
@@ -108,13 +106,16 @@ namespace ConsoleOop
         {
             List<IHandler> handles = new List<IHandler>();
 
+            /// 讀取檔案
             handles.Add(HandlerFactory.Create("file"));
 
+            /// 檔案處理
             for (int i = 0; i < candidate.Config.Handlers.Length; i++)
             {
                 handles.Add(HandlerFactory.Create(candidate.Config.Handlers[i]));
             }
 
+            /// 目錄備份
             if (!string.IsNullOrEmpty(candidate.Config.Destination))
             {
                 handles.Add(HandlerFactory.Create("directory"));

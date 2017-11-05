@@ -1,36 +1,43 @@
-﻿{
+{
   "configs": [
     {
       "ext": "cs",
-      "location": "d:\\GitProject\\OOP\\NetCore\\ConsoleOop\\ConsoleOop",
+      "location": "d:\\GitProject\\OOP\\NetCore\\ConsoleOop\\ConsoleOop\\",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handlers": [ "zip", "encode" ],
+      "handlers": [
+        "zip",
+        "encode"
+      ],
       "destination": "directory",
-      "dir": "D:\\OopTestFile",
+      "dir": "d:\\OopTestFile\\net\\",
       "connectionString": ""
     },
     {
       "ext": "DOCX",
-      "location": "d:\\",
+      "location": "d:\\OopTestFile\\",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handlers": [ "encode" ],
+      "handlers": [
+        "encode"
+      ],
       "destination": "db",
       "dir": "",
       "connectionString": "MyConnectionString"
     },
     {
       "ext": "jpg",
-      "location": "d:\\OopTestFile",
+      "location": "d:\\OopTestFile\\",
       "subDirectory": true,
       "unit": "file",
       "remove": false,
-      "handlers": [ "zip" ],
+      "handlers": [
+        "zip"
+      ],
       "destination": "directory",
-      "dir": "d:\\OopTestFile",
+      "dir": "d:\\OopTestFile\\net\\",
       "connectionString": ""
     }
   ]

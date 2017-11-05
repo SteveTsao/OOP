@@ -6,14 +6,14 @@
  * Time: 下午 05:17
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 類別唯讀屬性實作
  * Trait PropReadOnlyTrait
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 trait PropReadOnlyTrait
 {

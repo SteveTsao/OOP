@@ -1,1 +1,44 @@
-{"configs":[{"ext":"cs","location":"c:\\Projects","subDirectory":true,"unit":"file","remove":false,"handler":"zip","destination":"directory","dir":"c:\\MyArchieves","connectionString":""},{"ext":"DOCX","location":"c:\\Documents","subDirectory":true,"unit":"file","remove":false,"handler":"encode","destination":"db","dir":"","connectionString":"MyConnectionString"},{"ext":"jpg","location":"c:\\Pictures","subDirectory":true,"unit":"file","remove":false,"handler":"","destination":"directory","dir":"c:\\MyArchieves","connectionString":""}]}
+{
+  "configs": [
+    {
+      "ext": "cs",
+      "location": "d:\\GitProject\\OOP\\NetCore\\ConsoleOop\\ConsoleOop\\",
+      "subDirectory": true,
+      "unit": "file",
+      "remove": false,
+      "handlers": [
+        "zip",
+        "encode"
+      ],
+      "destination": "directory",
+      "dir": "d:\\OopTestFile\\php\\",
+      "connectionString": ""
+    },
+    {
+      "ext": "DOCX",
+      "location": "d:\\OopTestFile\\",
+      "subDirectory": true,
+      "unit": "file",
+      "remove": false,
+      "handlers": [
+        "encode"
+      ],
+      "destination": "db",
+      "dir": "",
+      "connectionString": "MyConnectionString"
+    },
+    {
+      "ext": "jpg",
+      "location": "d:\\OopTestFile\\",
+      "subDirectory": true,
+      "unit": "file",
+      "remove": false,
+      "handlers": [
+        "zip"
+      ],
+      "destination": "directory",
+      "dir": "d:\\OopTestFile\\php\\",
+      "connectionString": ""
+    }
+  ]
+}

@@ -6,14 +6,14 @@
  * Time: 下午 04:59
  */
 
-namespace App\Services;
+namespace App\Services\Configs;
 
 
 /**
  * 檔案處理設定類別
  * Class Config
  * @author steve.tsao
- * @package App\Services
+ * @package App\Services\Configs
  */
 class Config
 {
@@ -24,12 +24,13 @@ class Config
     private $subDirectory = true;
     private $unit = '';
     private $remove = false;
-    private $handler = '';
+    private $handlers = [];
     private $destination = '';
     private $dir = '';
     private $connectionString = '';
 
     /**
+     * 建構子 屬性初始設定
      * Config constructor.
      * @author steve.tsao
      * @param string $ext 檔案格式
@@ -37,7 +38,7 @@ class Config
      * @param bool $subDirectory 是否處理子目錄
      * @param string $unit 設定備份單位
      * @param bool $remove 處理完是否刪除檔案
-     * @param string $handler 處理方式
+     * @param array $handlers 處理方式
      * @param string $destination 
      * @param string $dir 處理後的目錄
      * @param string $connectionString 資料庫連接字串
@@ -48,7 +49,7 @@ class Config
         bool $subDirectory,
         string $unit,
         bool $remove,
-        string $handler,
+        array $handlers,
         string $destination,
         string $dir,
         string $connectionString
@@ -59,7 +60,7 @@ class Config
         $this->subDirectory = $subDirectory;
         $this->unit = $unit;
         $this->remove = $remove;
-        $this->handler = $handler;
+        $this->handlers = $handlers;
         $this->destination = $destination;
         $this->dir = $dir;
         $this->connectionString = $connectionString;
