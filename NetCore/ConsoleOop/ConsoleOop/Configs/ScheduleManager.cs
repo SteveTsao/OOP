@@ -18,7 +18,7 @@ namespace ConsoleOop.Configs
         /// <summary>
         /// JSON檔案位置
         /// </summary>
-        private const string path = "schedule.json";
+        private const string path = "schedules.json";
 
         /// <summary>
         /// 陣列Schedule物件總數

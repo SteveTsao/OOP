@@ -1,7 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using System.Collections.Generic;
 using ConsoleOop.Configs;
 using ConsoleOop.Handlers;
 
@@ -33,10 +32,10 @@ namespace ConsoleOop
         /// </summary>
         public void ProcessJsonConfigs()
         {
-            for (int i = 0; i < this.managers.Count; i++)
+            this.managers.ForEach(delegate (JsonManager jsonManager)
             {
-                this.managers[i].ProcessJsonConfig();
-            }
+                jsonManager.ProcessJsonConfig();
+            });
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace ConsoleOop
                       select o).ToList().ForEach(delegate (FileInfo info)
                       {
                           /// 加入備份檔案
-                          candidates.Add(new Candidate(configManager[i], DateTime.Now, info.Name, info.FullName, info.Length));
+                          candidates.Add(new Candidate(configManager[i], info.LastWriteTime, info.Name, info.FullName, info.Length));
                       });
                  }
              });

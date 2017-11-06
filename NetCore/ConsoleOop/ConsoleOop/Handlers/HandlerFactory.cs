@@ -14,7 +14,7 @@ namespace ConsoleOop.Handlers
         /// <summary>
         /// 檔案處理方式類別命名空間
         /// </summary>
-        public static readonly string InstanceNamespace = "ConsoleOop.Handlers.";
+        private const string InstanceNamespace = "ConsoleOop.Handlers.";
 
         /// <summary>
         /// 建立處理方式類別物件
