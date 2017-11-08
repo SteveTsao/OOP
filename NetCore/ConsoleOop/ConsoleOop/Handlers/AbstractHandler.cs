@@ -14,10 +14,7 @@ namespace ConsoleOop.Handlers
         /// <param name="candidate">檔案資訊</param>
         /// <param name="target">檔案</param>
         /// <returns>處理後檔案</returns>
-        public virtual byte[] PerForm(Candidate candidate, byte[] target)
-        {
-            return target;
-        }
+        public abstract byte[] PerForm(Candidate candidate, byte[] target);
 
         /// <summary>
         /// 儲存檔案

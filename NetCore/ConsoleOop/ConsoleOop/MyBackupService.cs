@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using ConsoleOop.Configs;
 using ConsoleOop.Handlers;
+using ConsoleOop.Finders;
 
 namespace ConsoleOop
 {
@@ -43,9 +43,37 @@ namespace ConsoleOop
         /// </summary>
         public void DoBackup()
         {
-            this.FindFiles().ForEach(this.BroadcastToHandlers);
+            /// 找到 ConfigManager 型別物件
+            (from o in this.managers
+             where o.GetType().Equals(typeof(ConfigManager))
+             select o).ToList().ForEach(delegate (JsonManager jsonManager)
+             {
+                 /// 建立 FileFinder 物件
+                 IFileFinder fileFinder = FileFinderFactory.Create("file");
+
+                 var configManager = (ConfigManager)jsonManager;
+
+                 /// 讀取Config設定
+                 for (int i = 0; i < configManager.Count; i++)
+                 {
+                     fileFinder.FileFinder(configManager[i]);
+
+                     foreach (Candidate candidate in fileFinder)
+                     {
+                         this.BroadcastToHandlers(candidate);
+                     }
+
+                     foreach (Candidate candidate in fileFinder)
+                     {
+                         this.BroadcastToHandlers(candidate);
+
+                         System.Console.WriteLine(candidate.Name);
+                     }
+                 }
+             });
         }
 
+        /*
         /// <summary>
         /// 取得所有備份檔案
         /// </summary>
@@ -69,18 +97,17 @@ namespace ConsoleOop
                      DirectoryInfo dirInfo = new DirectoryInfo(configManager[i].Location);
 
                      /// 取得目錄下所有檔案並過濾類型
-                     (from o in dirInfo.GetFiles()
-                      where o.Extension == "." + configManager[i].Ext
-                      select o).ToList().ForEach(delegate (FileInfo info)
-                      {
-                          /// 加入備份檔案
-                          candidates.Add(new Candidate(configManager[i], info.LastWriteTime, info.Name, info.FullName, info.Length));
-                      });
+                     dirInfo.GetFiles("." + configManager[i].Ext, configManager[i].SubDirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly).ToList().ForEach(delegate (FileInfo info)
+                     {
+                         /// 加入備份檔案
+                         candidates.Add(new Candidate(configManager[i], info.LastWriteTime, info.Name, info.FullName, info.Length));
+                     });
                  }
              });
 
             return candidates;
         }
+        */
 
         /// <summary>
         /// 執行檔案備份

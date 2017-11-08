@@ -33,7 +33,7 @@ namespace ConsoleOop.Handlers
         /// <returns>備份後檔案</returns>
         private byte[] CopyToDirectory(Candidate candidate, byte[] target)
         {
-            this.ConvertByteArrayToFile(candidate.Config.Dir + candidate.Name + ".bak", target);
+            this.ConvertByteArrayToFile(candidate.Config.Dir + candidate.Name.Replace("\\", "_").Replace("//", "_").Replace(":", "") + ".bak", target);
 
             return target;
         }

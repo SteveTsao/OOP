@@ -35,7 +35,7 @@ namespace ConsoleOop.Handlers
         /// <returns>檔案</returns>
         private byte[] ConvertFileToByteArray(Candidate candidate)
         {
-            return File.ReadAllBytes(candidate.Config.Location + candidate.Name);
+            return File.ReadAllBytes(candidate.Name);
         }
     }
 }
