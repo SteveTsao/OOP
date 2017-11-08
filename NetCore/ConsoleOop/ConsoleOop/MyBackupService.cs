@@ -62,13 +62,6 @@ namespace ConsoleOop
                      {
                          this.BroadcastToHandlers(candidate);
                      }
-
-                     foreach (Candidate candidate in fileFinder)
-                     {
-                         this.BroadcastToHandlers(candidate);
-
-                         System.Console.WriteLine(candidate.Name);
-                     }
                  }
              });
         }
