@@ -18,10 +18,16 @@ namespace ConsoleOop.Finders
         /// </summary>
         public string[] files;
 
+        /// <summary>
         /// IEnumerator
+        /// </summary>
+        /// <returns>備份檔案資訊</returns>
         public IEnumerator GetEnumerator()
         {
-            return new FileFinderEnumerator(this);
+            for (int i = 0; i < this.files.Length; i++)
+            {
+                yield return this.CreateCandidate(this.files[i]);
+            }
         }
 
         /// <summary>
@@ -36,38 +42,5 @@ namespace ConsoleOop.Finders
         /// <param name="fileName">檔案位置</param>
         /// <returns>備份檔案資訊</returns>
         protected abstract Candidate CreateCandidate(string fileName);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private class FileFinderEnumerator : IEnumerator
-        {
-            /// <summary>
-            /// IEnumerator 起始
-            /// </summary>
-            private int index = -1;
-
-            private AbstractFileFinder abstractFileFinder;
-
-            public FileFinderEnumerator(AbstractFileFinder abstractFileFinders)
-            {
-                this.abstractFileFinder = abstractFileFinders;
-            }
-
-            /// IEnumerator     
-            public object Current => this.abstractFileFinder.CreateCandidate(this.abstractFileFinder.files[this.index]);
-
-            /// IEnumerator
-            public bool MoveNext()
-            {
-                return (++this.index < this.abstractFileFinder.files.Length);
-            }
-
-            /// IEnumerator
-            public void Reset()
-            {
-                System.Console.WriteLine("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-            }
-        }
     }
 }
