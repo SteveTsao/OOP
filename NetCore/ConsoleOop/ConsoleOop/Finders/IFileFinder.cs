@@ -6,7 +6,7 @@ namespace ConsoleOop.Finders
     /// <summary>
     /// 備份來源介面
     /// </summary>
-    interface IFileFinder : IEnumerable, IEnumerator
+    interface IFileFinder : IEnumerable
     {
         /// <summary>
         /// 來源讀取
