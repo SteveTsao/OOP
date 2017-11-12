@@ -23,16 +23,16 @@ namespace ConsoleOop.Finders
         /// <returns>處理備份來源類別物件</returns>
         public static IFileFinder Create(string handler)
         {
-            /// 讀取處理方式類別設定檔
+            /// 讀取備份來源類別設定檔
             string jsonString = File.ReadAllText("finder_mapping.json");
 
             /// 類別設定檔
             var handlerDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
 
-            /// 取得對應處理方式
+            /// 取得對應備份來源
             var instance = handlerDictionary.Where(p => p.Key == handler).Select(p => p.Value).FirstOrDefault<string>();
 
-            /// 建立處理方式類別
+            /// 建立備份來源類別
             return (IFileFinder)Activator.CreateInstance(Type.GetType(InstanceNamespace + instance));
         }
     }
