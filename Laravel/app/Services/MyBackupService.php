@@ -14,6 +14,7 @@ use App\Services\Configs\Config;
 use App\Services\Configs\ConfigManager;
 use App\Services\Configs\JsonManager;
 use App\Services\Configs\ScheduleManager;
+use App\Services\Finders\FileFinderFactory;
 use App\Services\Handlers\HandlerFactory;
 use App\Services\Handlers\IHandler;
 
@@ -79,9 +80,29 @@ class MyBackupService
      */
     public function DoBackup()
     {
-        collect($this->findFiles())->each(function (Candidate $candidate) {
-            $this->BroadcastToHandlers($candidate);
+        collect($this->managers)->each(function ($item, $key) {
+
+            // 找到 ConfigManager 型別物件
+            if ($item instanceof ConfigManager && !empty($this->configs[$key]) && is_array($this->configs[$key])) {
+
+                // 建立 FileFinder 物件
+                $fileFinder = FileFinderFactory::Create('file');
+
+                collect($this->configs[$key])->each(function ($config) use ($fileFinder) {
+
+                    // 取得所有備份檔案
+                    $fileFinder->FileFinder($config);
+
+                    collect($fileFinder)->each(function ($candidate) {
+
+                        // 執行檔案備份
+                        $this->BroadcastToHandlers($candidate);
+                    });
+                });
+            }
         });
+
+        exit;
     }
 
     /**
@@ -89,6 +110,7 @@ class MyBackupService
      * @author steve.tsao
      * @return array
      */
+    /*
     private function FindFiles(): array
     {
         return collect($this->managers)->map(function ($item, $key) {
@@ -114,6 +136,7 @@ class MyBackupService
 
         })->flatten()->all();
     }
+    */
 
     /**
      * 執行檔案備份

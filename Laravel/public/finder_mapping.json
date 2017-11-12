@@ -1,0 +1,5 @@
+{
+  "file": "LoadFileFinder",
+  "ftp": "FTPFileFinder",
+  "s3": "S3FileFinder"
+}

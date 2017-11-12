@@ -29,6 +29,7 @@ class AbstractHandler implements IHandler
     public function PerForm(Candidate $candidate, $target): string
     {
         // TODO: Implement PerForm() method.
+
         return $target;
     }
 
@@ -43,6 +44,17 @@ class AbstractHandler implements IHandler
         $fp = fopen($path, 'w');
         fwrite($fp, $target);
         fclose($fp);
+    }
+
+    /**
+     * 產生檔案名稱
+     * @author steve.tsao
+     * @param string $path
+     * @return string
+     */
+    protected function GenFileName(string $path):string
+    {
+        return str_replace(['%', ':', '/', '\\'], ['%25', '%3A', '%2F', '%5C'], $path);
     }
 
     /*

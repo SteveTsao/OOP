@@ -29,24 +29,24 @@ class FileHandler extends AbstractHandler
     public function PerForm(Candidate $candidate, $target): string
     {
         if (is_null($target)) {
-            return $this->ConvertFileToByteArray($candidate); // 轉換成 btyes
+            return $this->ConvertFileToString($candidate); // 轉換成 string
         }
 
         // 暫存檔案
-        $this->ConvertStringToFile($candidate->Name, $target);
+        $this->ConvertStringToFile($this->GenFileName($candidate->Name) . '.tmp', $target);
 
         return $target;
     }
 
     /**
-     * 讀取檔案轉換成btye型態
+     * 讀取檔案轉換成字串型態
      * @author steve.tsao
      * @param Candidate $candidate 檔案資訊
      * @return string 檔案內容
      */
-    public function ConvertFileToByteArray(Candidate $candidate): string
+    public function ConvertFileToString(Candidate $candidate): string
     {
-        $fp = fopen($candidate->Config->Location . $candidate->Name, 'r');
+        $fp = fopen($candidate->Name, 'r');
 
         $str = '';
         $tmp = fgets($fp);

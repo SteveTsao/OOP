@@ -17,7 +17,7 @@ namespace App\Services\Handlers;
  */
 class HandlerFactory
 {
-    const InstanceNamespace = '\\App\\Services\\Handlers\\'; //檔案處理方式類別命名空間
+    const InstanceNamespace = __NAMESPACE__ . '\\'; // 檔案處理方式類別命名空間
 
     /**
      * 建立處理方式類別物件
@@ -30,7 +30,7 @@ class HandlerFactory
         // 讀取處理方式類別設定檔
         $handlers = json_decode(file_get_contents('handler_mapping.json'), JSON_OBJECT_AS_ARRAY);
 
-        // 取得對應處理方式
+        // 處理方式類別
         $instance = self::InstanceNamespace . $handlers[$handler];
 
         // 建立處理方式類別

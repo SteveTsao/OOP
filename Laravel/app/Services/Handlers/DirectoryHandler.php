@@ -28,7 +28,9 @@ class DirectoryHandler extends AbstractHandler
      */
     public function PerForm(Candidate $candidate, $target): string
     {
-        $this->ConvertStringToFile($candidate->Config->Dir . $candidate->Name . '.bak', $target);
+        $fileName = $this->GenFileName($candidate->Name) . '.bak';
+
+        $this->ConvertStringToFile($candidate->Config->Dir . $fileName, $target);
 
         return $target;
     }
