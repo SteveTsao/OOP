@@ -19,7 +19,7 @@ namespace ConsoleOop.Finders
         public string[] files;
 
         /// <summary>
-        /// IEnumerator
+        /// IEnumerator 實作 Iterator 迭代器
         /// </summary>
         /// <returns>備份檔案資訊</returns>
         public IEnumerator GetEnumerator()
@@ -34,13 +34,13 @@ namespace ConsoleOop.Finders
         /// 備份來源處理
         /// </summary>
         /// <param name="config">檔案設定</param>
-        public abstract void FileFinder(Config config);
+        abstract public void FileFinder(Config config);
 
         /// <summary>
         /// 建立備份來源檔案抽象函數
         /// </summary>
         /// <param name="fileName">檔案位置</param>
         /// <returns>備份檔案資訊</returns>
-        protected abstract Candidate CreateCandidate(string fileName);
+        abstract protected Candidate CreateCandidate(string fileName);
     }
 }

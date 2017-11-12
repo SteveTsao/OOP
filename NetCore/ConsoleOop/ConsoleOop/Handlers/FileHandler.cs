@@ -23,7 +23,7 @@ namespace ConsoleOop.Handlers
             }
 
             /// 暫存檔案
-            this.ConvertByteArrayToFile(candidate.Name + ".tmp", target);
+            this.ConvertByteArrayToFile(this.GenFileName(candidate.Name) + ".tmp", target);
 
             return target;
         }
