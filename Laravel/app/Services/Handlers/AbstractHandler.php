@@ -49,8 +49,8 @@ class AbstractHandler implements IHandler
     /**
      * 產生檔案名稱
      * @author steve.tsao
-     * @param string $path
-     * @return string
+     * @param string $path 原檔案名稱
+     * @return string 新檔案名稱
      */
     protected function GenFileName(string $path):string
     {
