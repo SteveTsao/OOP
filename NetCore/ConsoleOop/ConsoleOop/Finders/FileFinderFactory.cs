@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using ConsoleOop.Configs;
 
 namespace ConsoleOop.Finders
 {
@@ -21,7 +22,7 @@ namespace ConsoleOop.Finders
         /// </summary>
         /// <param name="handler">備份來源</param>
         /// <returns>處理備份來源類別物件</returns>
-        public static IFileFinder Create(string handler)
+        public static IFileFinder Create(string handler, Config config)
         {
             /// 讀取備份來源類別設定檔
             string jsonString = File.ReadAllText("finder_mapping.json");
@@ -33,7 +34,7 @@ namespace ConsoleOop.Finders
             var instance = handlerDictionary.Where(p => p.Key == handler).Select(p => p.Value).FirstOrDefault<string>();
 
             /// 建立備份來源類別
-            return (IFileFinder)Activator.CreateInstance(Type.GetType(InstanceNamespace + instance));
+            return (IFileFinder)Activator.CreateInstance(Type.GetType(InstanceNamespace + instance), new object[] { config });
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using ConsoleOop.Configs;
+using MyBackupCandidate;
 
 namespace ConsoleOop.Finders
 {
@@ -28,6 +29,15 @@ namespace ConsoleOop.Finders
             {
                 yield return this.CreateCandidate(this.files[i]);
             }
+        }
+
+        /// <summary>
+        /// 建構子
+        /// </summary>
+        /// <param name="config">檔案設定</param>
+        public AbstractFileFinder(Config config)
+        {
+            this.FileFinder(config);
         }
 
         /// <summary>

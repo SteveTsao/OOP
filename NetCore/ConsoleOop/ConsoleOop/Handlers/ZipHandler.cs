@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.IO.Compression;
-using ConsoleOop.Configs;
+using MyBackupCandidate;
 
 namespace ConsoleOop.Handlers
 {

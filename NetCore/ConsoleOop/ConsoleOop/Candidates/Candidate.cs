@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Runtime.Serialization;
+using ConsoleOop.Configs;
 
-namespace ConsoleOop.Configs
+namespace MyBackupCandidate
 {
     /// <summary>
     /// 備份檔案資訊
     /// </summary>
-    [DataContract]
     class Candidate
     {
         /// <summary>
@@ -42,7 +41,7 @@ namespace ConsoleOop.Configs
         /// <param name="name">檔案名稱</param>
         /// <param name="processName">處理名稱</param>
         /// <param name="size">檔案大小</param>
-        public Candidate(Config config, DateTime fileDateTime, string name, string processName, long size)
+        internal Candidate(Config config, DateTime fileDateTime, string name, string processName, long size)
         {
             this.Config = config;
             this.FileDateTime = fileDateTime;

@@ -1,6 +1,6 @@
 ﻿using System;
-using Microsoft.Extensions.DependencyInjection;
 using ConsoleOop.Configs;
+//using Microsoft.Extensions.DependencyInjection;
 
 namespace ConsoleOop
 {
@@ -38,6 +38,7 @@ namespace ConsoleOop
                 Console.WriteLine("schedules[" + i + "].Interval=" + schedules[i].Interval);
             }
 
+            /*
             /// Dependency Injection 依賴注入
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<ConfigManager>()
@@ -46,13 +47,14 @@ namespace ConsoleOop
                 .BuildServiceProvider();
 
             /// 備份類別
-            var bkService = serviceProvider.GetService<MyBackupService>();
+            var myBackupService = serviceProvider.GetService<MyBackupService>();
+            */
 
-            /// 讀取檔案的備份設定
-            bkService.ProcessJsonConfigs();
+            /// 備份類別
+            var myBackupService = new MyBackupService();
 
-            /// 執行檔案備份
-            bkService.DoBackup();
+            myBackupService.SimpleTask();
+            myBackupService.ScheduledTask();
 
             Console.ReadKey(true);
         }

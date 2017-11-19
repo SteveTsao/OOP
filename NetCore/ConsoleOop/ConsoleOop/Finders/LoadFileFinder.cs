@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ConsoleOop.Configs;
+using MyBackupCandidate;
 
 namespace ConsoleOop.Finders
 {
@@ -8,6 +9,15 @@ namespace ConsoleOop.Finders
     /// </summary>
     class LoadFileFinder : AbstractFileFinder
     {
+        /// <summary>
+        /// 建構子
+        /// </summary>
+        /// <param name="config">檔案設定</param>
+        public LoadFileFinder(Config config) : base(config)
+        {
+
+        }
+
         /// <summary>
         /// 取得備份來源資訊
         /// </summary>
@@ -30,7 +40,7 @@ namespace ConsoleOop.Finders
         {
             FileInfo info = new FileInfo(fileName);
 
-            return new Candidate(config, info.CreationTime, fileName, info.Name, info.Length);
+            return CandidateFactory.Create(config, info.CreationTime, fileName, info.Name, info.Length);
         }
     }
 }
