@@ -18,17 +18,12 @@ namespace App\Services\Configs;
 class ConfigManager extends JsonManager
 {
     /**
-     * @var array 陣列儲存多筆Config物件
-     */
-    private $configs = [];
-
-    /**
      * 解析JSON檔案轉成Config物件陣列
      * @author steve.tsao
      * @param string $path 檔案位置
      * @return array
      */
-    public function ProcessJsonConfig(string $path = 'configs.json'): array
+    public function ProcessJsonConfig(string $path = 'configs.json')
     {
         $this->configs = $this->GetJsonObject($path, 'configs', function ($item) {
             return new Config(
@@ -43,7 +38,5 @@ class ConfigManager extends JsonManager
                 $item['connectionString']
             );
         });
-
-        return $this->configs;
     }
 }

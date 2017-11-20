@@ -25,7 +25,7 @@ class HandlerFactory
      * @param string $handler 處理方式
      * @return IHandler 處理方式類別物件
      */
-    public static function Create(string $handler)
+    public static function Create(string $handler): IHandler
     {
         // 讀取處理方式類別設定檔
         $handlers = json_decode(file_get_contents('handler_mapping.json'), JSON_OBJECT_AS_ARRAY);

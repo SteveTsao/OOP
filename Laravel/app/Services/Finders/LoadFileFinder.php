@@ -28,7 +28,7 @@ class LoadFileFinder extends AbstractFileFinder
      * @param string $filePath 檔案位置
      * @return Collection 所有檔案
      */
-    private function GetFiles(Config $config, string $filePath = '*')
+    private function GetFiles(Config $config, string $filePath = '*'): Collection
     {
         return collect(glob($filePath))->map(function ($item) use ($config) {
 

@@ -9,6 +9,8 @@
 namespace App\Services\Finders;
 
 
+use App\Services\Configs\Config;
+
 /**
  * 備份來源工廠模式
  * Class FileFinderFactory
@@ -22,18 +24,19 @@ class FileFinderFactory
     /**
      * 建立備份來源類別物件
      * @author steve.tsao
-     * @param string $handler 備份來源
+     * @param string $finder 備份來源
+     * @param Config $config 檔案處理設定
      * @return IFileFinder 處理備份來源類別物件
      */
-    public static function Create(string $handler)
+    public static function Create(string $finder, Config $config): IFileFinder
     {
         // 讀取備份來源類別設定檔
-        $handlers = json_decode(file_get_contents('finder_mapping.json'), JSON_OBJECT_AS_ARRAY);
+        $finders = json_decode(file_get_contents('finder_mapping.json'), JSON_OBJECT_AS_ARRAY);
 
         // 備份來源類別
-        $instance = self::InstanceNamespace . $handlers[$handler];
+        $instance = self::InstanceNamespace . $finders[$finder];
 
         // 建立備份來源類別
-        return new $instance();
+        return new $instance($config);
     }
 }

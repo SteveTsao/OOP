@@ -10,6 +10,7 @@ namespace App\Services\Finders;
 
 
 use App\Services\Configs\Candidate;
+use App\Services\Configs\Config;
 
 /**
  * 備份來源抽象類別
@@ -36,6 +37,19 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
      * @return Candidate 備份檔案資訊
      */
     abstract protected function CreateCandidate(string $fileName): Candidate;
+
+    /**
+     * 建構子
+     * AbstractFileFinder constructor.
+     * @author steve.tsao
+     * @param Config $config 檔案設定
+     */
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+
+        $this->FileFinder($config);
+    }
 
     /**
      * ArrayAccess 實作物件陣列是否存在
@@ -139,7 +153,7 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
     }
 
     /**
-     * Iterator 實作迭代器檢察當前元素是否存在
+     * Iterator 實作迭代器檢查當前元素是否存在
      * @author steve.tsao
      * @return bool 是否存在
      */

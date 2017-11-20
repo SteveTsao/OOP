@@ -52,7 +52,7 @@ class AbstractHandler implements IHandler
      * @param string $path 原檔案名稱
      * @return string 新檔案名稱
      */
-    protected function GenFileName(string $path):string
+    protected function GenFileName(string $path): string
     {
         return str_replace(['%', ':', '/', '\\'], ['%25', '%3A', '%2F', '%5C'], $path);
     }

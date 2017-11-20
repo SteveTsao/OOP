@@ -15,9 +15,14 @@ namespace App\Services\Configs;
  * @author steve.tsao
  * @package App\Services\Configs
  */
-abstract class JsonManager
+abstract class JsonManager implements \ArrayAccess, \Iterator
 {
     use PropReadOnlyTrait; // 設定類別唯讀屬性: this->Count
+
+    /**
+     * @var array 多筆Config或Schedule物件陣列
+     */
+    protected $configs = [];
 
     /**
      * 實作解析JSON轉換物件
@@ -49,5 +54,120 @@ abstract class JsonManager
         $this->count = $item->count();
 
         return $item->all();
+    }
+
+    /**
+     * ArrayAccess 實作物件陣列是否存在
+     * @author steve.tsao
+     * @param mixed $offset
+     * @return bool
+     */
+    public function offsetExists($offset)
+    {
+        // TODO: Implement offsetExists() method.
+
+        return isset($this->configs[$offset]);
+    }
+
+    /**
+     * ArrayAccess 實作取得物件陣列內容
+     * @author steve.tsao
+     * @param mixed $offset 陣列鍵值
+     * @return Config|null 返回內容
+     */
+    public function offsetGet($offset)
+    {
+        // TODO: Implement offsetGet() method.
+
+        return $this->configs[$offset] ?? null;
+    }
+
+    /**
+     * ArrayAccess 實作設定物件陣列內容
+     * @author steve.tsao
+     * @param mixed $offset 陣列鍵值
+     * @param mixed $value 設定內容
+     */
+    public function offsetSet($offset, $value)
+    {
+        // TODO: Implement offsetSet() method.
+
+        if (is_null($offset)) {
+            $this->configs[] = $value;
+        } else {
+            $this->configs[$offset] = $value;
+        }
+    }
+
+    /**
+     * ArrayAccess 實作物件移除陣列內容
+     * @author steve.tsao
+     * @param mixed $offset 陣列鍵值
+     */
+    public function offsetUnset($offset)
+    {
+        // TODO: Implement offsetUnset() method.
+
+        unset($this->configs[$offset]);
+    }
+
+    /**
+     * Iterator 實作迭代器返回元素
+     * @author steve.tsao
+     * @return Candidate 返回元素(備份檔案資訊物件)
+     */
+    public function current()
+    {
+        // TODO: Implement current() method.
+
+        return current($this->configs);
+    }
+
+    /**
+     * Iterator 實作迭代器返回元素的鍵值
+     * @author steve.tsao
+     * @return int|null|string 元素鍵值
+     */
+    public function key()
+    {
+        // TODO: Implement key() method.
+
+        return key($this->configs);
+    }
+
+    /**
+     * Iterator 實作迭代器移動到下一個元素
+     * @author steve.tsao
+     */
+    public function next()
+    {
+        // TODO: Implement next() method.
+
+        next($this->configs);
+    }
+
+    /**
+     * Iterator 實作迭代器回到第一個元素
+     * @author steve.tsao
+     */
+    public function rewind()
+    {
+        // TODO: Implement rewind() method.
+
+        reset($this->configs);
+    }
+
+    /**
+     * Iterator 實作迭代器檢查當前元素是否存在
+     * @author steve.tsao
+     * @return bool 是否存在
+     */
+    public function valid()
+    {
+        // TODO: Implement valid() method.
+
+        $key = key($this->configs);
+
+        return ($key !== NULL && $key !== FALSE);
     }
 }
