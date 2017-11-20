@@ -4,7 +4,7 @@ using ConsoleOop.Configs;
 namespace ConsoleOop.Tasks
 {
     /// <summary>
-    /// 執行備份類別
+    /// 執行備份介面
     /// </summary>
     interface ITask
     {
