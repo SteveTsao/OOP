@@ -70,7 +70,7 @@ namespace ConsoleOop.Tasks
 
             return schedules;
         }
-
+        
         /// <summary>
         /// 簡單備份
         /// </summary>
@@ -78,8 +78,7 @@ namespace ConsoleOop.Tasks
         public void SimpleTask(List<JsonManager> managers)
         {
             this.task = TaskFactory.Create("simple");
-
-            task.Execute(this.GetConfigs(managers), new List<Schedule>());
+            this.task.Execute(this.GetConfigs(managers), new List<Schedule>());
         }
 
         /// <summary>
@@ -89,8 +88,7 @@ namespace ConsoleOop.Tasks
         public void ScheduledTask(List<JsonManager> managers)
         {
             this.task = TaskFactory.Create("schedule");
-
-            task.Execute(this.GetConfigs(managers), this.GetSchedules(managers));
+            this.task.Execute(this.GetConfigs(managers), this.GetSchedules(managers));
         }
     }
 }
