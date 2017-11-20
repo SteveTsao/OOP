@@ -27,10 +27,10 @@ namespace ConsoleOop.Handlers
             string jsonString = File.ReadAllText("handler_mapping.json");
 
             /// 類別設定檔
-            var handlerDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
+            var handlers = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
 
             /// 取得對應處理方式
-            var instance = handlerDictionary.Where(p => p.Key == handler).Select(p => p.Value).FirstOrDefault<string>();
+            var instance = handlers.Where(p => p.Key == handler).Select(p => p.Value).FirstOrDefault<string>();
 
             /// 建立處理方式類別
             return (IHandler)Activator.CreateInstance(Type.GetType(InstanceNamespace + instance));

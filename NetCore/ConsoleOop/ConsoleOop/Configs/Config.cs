@@ -6,7 +6,7 @@ namespace ConsoleOop.Configs
     /// 檔案處理設定類別
     /// </summary>
     [DataContract]
-    public class Config
+    class Config
     {
         /// <summary>
         /// 序列化:備份檔案的目錄(對應JOSN.ext鍵值)
