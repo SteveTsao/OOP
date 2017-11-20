@@ -34,17 +34,21 @@ namespace ConsoleOop.Finders
         /// <summary>
         /// 建構子
         /// </summary>
-        /// <param name="config">檔案設定</param>
-        public AbstractFileFinder(Config config)
+        /// <param name="conf">檔案設定</param>
+        public AbstractFileFinder(Config conf)
         {
-            this.FileFinder(config);
+            /// 設定來源位置
+            this.config = conf;
+
+            /// 備份來源處理
+            this.FileFinder(conf);
         }
 
         /// <summary>
         /// 備份來源處理
         /// </summary>
-        /// <param name="config">檔案設定</param>
-        abstract public void FileFinder(Config config);
+        /// <param name="conf">檔案設定</param>
+        abstract public void FileFinder(Config conf);
 
         /// <summary>
         /// 建立備份來源檔案抽象函數
