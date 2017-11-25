@@ -32,7 +32,7 @@ namespace ConsoleOop.Finders
         /// 設定備份檔案
         /// </summary>
         /// <param name="fileName">檔案位置</param>
-        /// <returns>備份檔案</returns>
+        /// <returns>檔案資訊</returns>
         protected override Candidate CreateCandidate(string fileName)
         {
             FileInfo info = new FileInfo(fileName);

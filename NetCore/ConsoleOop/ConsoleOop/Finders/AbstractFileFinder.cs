@@ -54,7 +54,7 @@ namespace ConsoleOop.Finders
         /// 建立備份來源檔案抽象函數
         /// </summary>
         /// <param name="fileName">檔案位置</param>
-        /// <returns>備份檔案資訊</returns>
+        /// <returns>檔案資訊</returns>
         abstract protected Candidate CreateCandidate(string fileName);
     }
 }

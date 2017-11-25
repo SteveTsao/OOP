@@ -11,8 +11,8 @@ namespace ConsoleOop.Handlers
         /// 處理檔案目錄備份
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>備份後檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>備份後檔案內容</returns>
         public override byte[] PerForm(Candidate candidate, byte[] target)
         {
             byte[] result = target;
@@ -29,7 +29,7 @@ namespace ConsoleOop.Handlers
         /// 備份檔案到目錄
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
+        /// <param name="target">檔案內容</param>
         /// <returns>備份後檔案</returns>
         private byte[] CopyToDirectory(Candidate candidate, byte[] target)
         {

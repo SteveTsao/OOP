@@ -12,8 +12,8 @@ namespace ConsoleOop.Handlers.DbHandlers
         /// 備份檔案處理
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>檔案內容</returns>
         public override byte[] Perform(Candidate candidate, byte[] target)
         {
             using (MySqlCommand cmd = new MySqlCommand("INSERT INTO Backups (Backup_filename, Backup_filedatetime, Backup_filesize, Backup_blob) VALUES (@filename, @filedatetime, @filesize, @blob)", this.conn))

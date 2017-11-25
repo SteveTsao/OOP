@@ -17,8 +17,8 @@ namespace ConsoleOop.Handlers.DbHandlers
         /// 備份到資料庫
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>檔案內容</returns>
         abstract public byte[] Perform(Candidate candidate, byte[] target);
 
         /// <summary>
