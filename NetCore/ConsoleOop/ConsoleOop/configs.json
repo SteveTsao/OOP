@@ -3,7 +3,7 @@
     {
       "ext": "cs",
       "location": "d:\\GitProject\\OOP\\NetCore\\ConsoleOop\\ConsoleOop\\",
-      "subDirectory": false,
+      "subDirectory": true,
       "unit": "file",
       "remove": false,
       "handlers": [
@@ -31,7 +31,7 @@
     {
       "ext": "jpg",
       "location": "d:\\OopTestFile\\",
-      "subDirectory": true,
+      "subDirectory": false,
       "unit": "file",
       "remove": false,
       "handlers": [
