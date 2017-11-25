@@ -8,7 +8,8 @@
       "remove": false,
       "handlers": [
         "zip",
-        "encode"
+        "encode",
+        "db"
       ],
       "destination": "directory",
       "dir": "d:\\OopTestFile\\net\\",
@@ -34,7 +35,8 @@
       "unit": "file",
       "remove": false,
       "handlers": [
-        "zip"
+        "zip",
+        "db"
       ],
       "destination": "directory",
       "dir": "d:\\OopTestFile\\net\\",
