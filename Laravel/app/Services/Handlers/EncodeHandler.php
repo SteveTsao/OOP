@@ -23,8 +23,8 @@ class EncodeHandler extends AbstractHandler
      * 檔案加密
      * @author steve.tsao
      * @param Candidate $candidate 檔案資訊
-     * @param string $target 檔案內容
-     * @return string 加密後檔案
+     * @param string|null $target 檔案內容
+     * @return string 加密後檔案內容
      */
     public function PerForm(Candidate $candidate, $target): string
     {

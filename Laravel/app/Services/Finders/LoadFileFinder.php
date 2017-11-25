@@ -26,7 +26,7 @@ class LoadFileFinder extends AbstractFileFinder
      * @author steve.tsao
      * @param Config $config 檔案設定
      * @param string $filePath 檔案位置
-     * @return Collection 所有檔案
+     * @return Collection 所有檔案集合
      */
     private function GetFiles(Config $config, string $filePath = '*'): Collection
     {
@@ -67,7 +67,7 @@ class LoadFileFinder extends AbstractFileFinder
      * 設定備份檔案
      * @author steve.tsao
      * @param string $fileName 檔案位置
-     * @return Candidate 備份檔案
+     * @return Candidate 檔案資訊
      */
     protected function CreateCandidate(string $fileName): Candidate
     {

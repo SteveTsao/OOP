@@ -39,7 +39,7 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
      * @param string $path 檔案位置
      * @param string $key 物件陣列在JSON的起始節點
      * @param \Closure $map 回傳物件處理函數
-     * @return array
+     * @return array 物件陣列
      */
     protected function GetJsonObject(string $path, string $key, \Closure $map): array
     {
@@ -59,8 +59,8 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess 實作物件陣列是否存在
      * @author steve.tsao
-     * @param mixed $offset
-     * @return bool
+     * @param mixed $offset 陣列索引
+     * @return bool 是否存在
      */
     public function offsetExists($offset)
     {
@@ -72,7 +72,7 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess 實作取得物件陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      * @return Config|null 返回內容
      */
     public function offsetGet($offset)
@@ -85,7 +85,7 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess 實作設定物件陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      * @param mixed $value 設定內容
      */
     public function offsetSet($offset, $value)
@@ -102,7 +102,7 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess 實作物件移除陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      */
     public function offsetUnset($offset)
     {
@@ -124,9 +124,9 @@ abstract class JsonManager implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator 實作迭代器返回元素的鍵值
+     * Iterator 實作迭代器返回元素的索引
      * @author steve.tsao
-     * @return int|null|string 元素鍵值
+     * @return int|null|string 元素索引
      */
     public function key()
     {

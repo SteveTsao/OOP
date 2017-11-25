@@ -23,7 +23,7 @@ interface IHandler
      * 處理方式
      * @author steve.tsao
      * @param Candidate $candidate 檔案資訊
-     * @param $target
+     * @param string|null $target 檔案內容
      * @return string 檔案內容
      */
     public function PerForm(Candidate $candidate, $target): string;

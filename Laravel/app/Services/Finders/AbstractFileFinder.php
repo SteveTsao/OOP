@@ -67,7 +67,7 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
     /**
      * ArrayAccess 實作取得物件陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      * @return Candidate|null 返回內容
      */
     public function offsetGet($offset)
@@ -80,7 +80,7 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
     /**
      * ArrayAccess 實作設定物件陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      * @param mixed $value 設定內容
      */
     public function offsetSet($offset, $value)
@@ -97,7 +97,7 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
     /**
      * ArrayAccess 實作物件移除陣列內容
      * @author steve.tsao
-     * @param mixed $offset 陣列鍵值
+     * @param mixed $offset 陣列索引
      */
     public function offsetUnset($offset)
     {
@@ -119,9 +119,9 @@ abstract class AbstractFileFinder implements IFileFinder, \ArrayAccess, \Iterato
     }
 
     /**
-     * Iterator 實作迭代器返回元素的鍵值
+     * Iterator 實作迭代器返回元素的索引
      * @author steve.tsao
-     * @return int|null|string 元素鍵值
+     * @return int|null|string 元素索引
      */
     public function key()
     {

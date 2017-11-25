@@ -22,9 +22,9 @@ class DirectoryHandler extends AbstractHandler
     /**
      * 處理檔案目錄備份
      * @author steve.tsao
-     * @param Candidate $candidate
-     * @param string $target 檔案內容
-     * @return string
+     * @param Candidate $candidate 檔案資訊
+     * @param string|null $target 檔案內容
+     * @return string 檔案內容
      */
     public function PerForm(Candidate $candidate, $target): string
     {

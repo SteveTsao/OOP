@@ -23,8 +23,8 @@ class ZipHandler extends AbstractHandler
      * 檔案壓縮
      * @author steve.tsao
      * @param Candidate $candidate 檔案資訊
-     * @param string $target 檔案
-     * @return string 壓縮後檔案
+     * @param string|null $target 檔案內容
+     * @return string 壓縮後檔案內容
      */
     public function PerForm(Candidate $candidate, $target): string
     {

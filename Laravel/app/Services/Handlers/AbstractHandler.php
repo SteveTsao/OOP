@@ -30,7 +30,7 @@ class AbstractHandler implements IHandler
     {
         // TODO: Implement PerForm() method.
 
-        return $target;
+        return (string)$target;
     }
 
     /**

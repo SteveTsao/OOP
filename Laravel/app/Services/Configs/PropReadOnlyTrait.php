@@ -20,8 +20,8 @@ trait PropReadOnlyTrait
     /**
      * 取得類別屬性內容
      * @author steve.tsao
-     * @param string $name
-     * @return mixed
+     * @param string $name 屬性索引
+     * @return mixed 屬性內容
      */
     public function __get(string $name)
     {
@@ -41,8 +41,8 @@ trait PropReadOnlyTrait
     /**
      * 類別屬性是否存在
      * @author steve.tsao
-     * @param string $name
-     * @return bool
+     * @param string $name 屬性索引
+     * @return bool 是否存在
      */
     public function __isset(string $name): bool
     {

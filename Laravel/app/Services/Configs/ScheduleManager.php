@@ -21,7 +21,7 @@ class ScheduleManager extends JsonManager
      * 解析JSON檔案轉成Schedule物件陣列
      * @author steve.tsao
      * @param string $path 檔案位置
-     * @return array
+     * @return array 物件陣列
      */
     public function ProcessJsonConfig(string $path = 'schedules.json')
     {
