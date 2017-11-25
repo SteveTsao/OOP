@@ -12,8 +12,8 @@ namespace ConsoleOop.Handlers
         /// 讀取、暫存檔案
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>處理後檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>處理後檔案內容</returns>
         public override byte[] PerForm(Candidate candidate, byte[] target)
         {
             if (target == null)
@@ -32,7 +32,7 @@ namespace ConsoleOop.Handlers
         /// 讀取檔案轉換成btye型態
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <returns>檔案</returns>
+        /// <returns>檔案內容</returns>
         private byte[] ConvertFileToByteArray(Candidate candidate)
         {
             return File.ReadAllBytes(candidate.Name);

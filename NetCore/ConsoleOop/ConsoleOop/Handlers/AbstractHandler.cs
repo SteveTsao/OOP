@@ -12,15 +12,15 @@ namespace ConsoleOop.Handlers
         /// 處理方式
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>處理後檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>處理後檔案內容</returns>
         abstract public byte[] PerForm(Candidate candidate, byte[] target);
 
         /// <summary>
         /// 儲存檔案
         /// </summary>
         /// <param name="path">儲存位置</param>
-        /// <param name="target">檔案</param>
+        /// <param name="target">檔案內容</param>
         protected void ConvertByteArrayToFile(string path, byte[] target)
         {
             File.WriteAllBytes(path, target);

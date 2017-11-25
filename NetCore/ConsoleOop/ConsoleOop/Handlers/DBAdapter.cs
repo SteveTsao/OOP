@@ -22,8 +22,8 @@ namespace ConsoleOop.Handlers
         /// 資料庫備份處理
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>檔案內容</returns>
         public override byte[] PerForm(Candidate candidate, byte[] target)
         {
             this.SaveBackupToDB(candidate, target); /// 備份檔案
@@ -36,7 +36,7 @@ namespace ConsoleOop.Handlers
         /// 備份檔案
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
+        /// <param name="target">檔案內容</param>
         private void SaveBackupToDB(Candidate candidate, byte[] target)
         {
             this.backupHandler.OpenConnection(); /// 開啟資料庫連線
@@ -48,7 +48,7 @@ namespace ConsoleOop.Handlers
         /// 備份記錄檔
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
+        /// <param name="target">檔案內容</param>
         private void SaveLogToDB(Candidate candidate, byte[] target)
         {
             this.logHandler.OpenConnection(); /// 開啟資料庫連線

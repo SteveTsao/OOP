@@ -13,8 +13,8 @@ namespace ConsoleOop.Handlers.DbHandlers
         /// 備份記錄檔處理
         /// </summary>
         /// <param name="candidate">檔案資訊</param>
-        /// <param name="target">檔案</param>
-        /// <returns>檔案</returns>
+        /// <param name="target">檔案內容</param>
+        /// <returns>檔案內容</returns>
         public override byte[] Perform(Candidate candidate, byte[] target)
         {
             using (MySqlCommand cmd = new MySqlCommand("INSERT INTO Logs (Log_filename, Log_datetime) VALUES (@filename, @datetime)", this.conn))
