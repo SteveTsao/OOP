@@ -1,0 +1,16 @@
+@startuml
+
+left to right direction
+
+actor normal as "一般使用者"
+actor computer as "電腦計時器"
+
+rectangle {
+    normal -- (設定檔案備份方式)
+    normal -- (設定檔案備份排程)
+    normal -- (執行簡單備份)
+    computer -- (執行簡單備份)
+    computer -- (執行排程備份)
+}
+
+@enduml
